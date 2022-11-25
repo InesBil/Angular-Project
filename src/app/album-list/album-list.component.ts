@@ -4,9 +4,10 @@ import { Album } from './Album';
 @Component({
   selector: 'app-album-list',
   templateUrl: './album-list.component.html',
-  styleUrls: ['./album-list.component.scss']
+  styleUrls: ['./album-list.component.scss'],
 })
 export class AlbumListComponent implements OnInit {
+<<<<<<< HEAD
 
   albums: Album [] = [
     {
@@ -31,13 +32,17 @@ export class AlbumListComponent implements OnInit {
       stock: 180    
     },
   ];
+=======
+  album = {
+    image: './assets/images/The_Car.jpg',
+    album: 'The Car',
+    anio: '2022',
+    precio: 3500,
+    stock: 200,
+  };
+>>>>>>> 0d0cc02a0f377a3fc522708047113b503089f397
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void{
-  
+  ngOnInit(): void {}
 }
-
-}
-
-
