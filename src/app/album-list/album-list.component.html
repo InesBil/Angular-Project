@@ -10,40 +10,12 @@
         </tr>
     </thead>
     <tbody class="table-group-divider">
-        <tr>
+        <tr *ngFor="let album of albums">
             <td><img [src]="album.image" [alt]="album.album"></td>
             <td>{{album.album}}</td>
-            <td>{{album.anio}}</td>
-            <td>{{album.precio}}</td>
+            <td>{{album.year}}</td>
+            <td>{{album.price}}</td>
             <td>{{album.stock}}</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>Tranquility Base Hotel Casino</td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        </tr>       
     </tbody>
 </table>

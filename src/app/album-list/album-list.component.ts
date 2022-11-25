@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Album } from './Album';
 
 @Component({
   selector: 'app-album-list',
@@ -7,14 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumListComponent implements OnInit {
 
-  album = {
-    "image": "./assets/images/The_Car.jpg",
-    "album": "The Car",
-    "anio": "2022",
-    "precio": 3500,
-    "stock": 200
-    
-  }
+  albums: Album [] = [
+    {
+      image: './assets/images/The_Car.jpg',
+      album: 'The Car',
+      year: 2022,
+      price: 3500,
+      stock: 200    
+    },
+    {
+      image: './assets/images/Tranquility_Base_Hotel_Casino.jpg',
+      album: 'Tranquility Base Hotel & Casino',
+      year: 2018,
+      price: 3500,
+      stock: 200    
+    },
+    {
+      image: './assets/images/AM.jpg',
+      album: 'AM',
+      year: 2013,
+      price: 3500,
+      stock: 180    
+    },
+  ];
 
   constructor() { }
 
