@@ -4,4 +4,5 @@ export interface Album{
     year: number;
     price: number;
     stock: number;
+    clearance:boolean;
 }
