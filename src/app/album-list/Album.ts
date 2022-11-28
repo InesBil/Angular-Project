@@ -5,4 +5,5 @@ export interface Album{
     price: number;
     stock: number;
     clearance:boolean;
+    quantity:number;
 }

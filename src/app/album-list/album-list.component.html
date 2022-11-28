@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover text-center">
     <thead>
         <tr>
             <th></th>
@@ -6,16 +6,25 @@
             <th>Año</th>
             <th>Precio</th>
             <th>Stock</th>
-            
+            <th>Cantidad</th>            
         </tr>
     </thead>
     <tbody class="table-group-divider">
         <tr *ngFor="let album of albums" [ngClass]="{'clearance':album.clearance}">
-            <td><img [src]="album.image" [alt]="album.album"></td>
+            <td><img class="img-thumbnail"[src]="album.image" [alt]="album.album"></td>
             <td>{{album.album}}</td>
             <td>{{album.year}}</td>
             <td>{{album.price | currency}}</td>
             <td><span class="badge text-bg-secondary" *ngIf="album.stock==0">SIN STOCK</span></td>
+            <td>
+                <button class="btn btn-outline-secondary-small" (click)="downQuantity(album)">-</button>
+                <input
+                    type="text" 
+                    [(ngModel)]="album.quantity"
+                    (focusout)="verifyAlbumQuantity(album)"/>
+                <button class="btn btn-outline-secondary-small" (click)="upQuantity(album)">+</button>
+            </td>
         </tr>       
     </tbody>
 </table>
+

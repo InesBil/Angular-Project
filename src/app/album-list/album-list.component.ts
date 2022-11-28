@@ -14,16 +14,18 @@ export class AlbumListComponent implements OnInit {
       album: 'The Car',
       year: 2022,
       price: 3500,
-      stock: 200,
-      clearance: false,    
+      stock: 10,
+      clearance: false,
+      quantity: 0,    
     },
     {
       image: './assets/images/Tranquility_Base_Hotel_Casino.jpg',
       album: 'Tranquility Base Hotel & Casino',
       year: 2018,
       price: 3500,
-      stock: 200,
-      clearance: true,    
+      stock: 8,
+      clearance: true,
+      quantity: 0,     
     },
     {
       image: './assets/images/AM.jpg',
@@ -31,11 +33,37 @@ export class AlbumListComponent implements OnInit {
       year: 2013,
       price: 3500,
       stock: 0,
-      clearance: false,    
+      clearance: false,
+      quantity: 0,     
     },
   ];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  upQuantity(album:Album):void{
+    if(album.quantity<album.stock){
+      album.quantity++;
+    }    
+  }
+
+  downQuantity(album:Album):void{
+    if(album.quantity>0){
+      album.quantity--;
+    }     
+  }
+
+  verifyAlbumQuantity(album:Album):void{
+    if(album.quantity>album.stock){
+      alert("No hay suficientes álbumes en stock");
+    }
+    if(album.quantity<0){
+      alert("Ingrese un numero mayor a 0");
+    }
+    album.quantity = 0;
+  }
+
 }
+
+

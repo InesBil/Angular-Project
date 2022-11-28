@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { AlbumListComponent } from './album-list/album-list.component';
 import { AlbumShopComponent } from './album-shop/album-shop.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,8 @@ import { AlbumShopComponent } from './album-shop/album-shop.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
