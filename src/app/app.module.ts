@@ -9,6 +9,8 @@ import { AlbumShopComponent } from './album-shop/album-shop.component';
 import { FormsModule } from '@angular/forms';
 import { AlbumContactComponent } from './album-contact/album-contact.component';
 import { ArcticAlbumsComponent } from './arctic-albums/arctic-albums.component';
+import { InputIntegerComponent } from './input-integer/input-integer.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { ArcticAlbumsComponent } from './arctic-albums/arctic-albums.component';
     AlbumListComponent,
     AlbumShopComponent,
     AlbumContactComponent,
-    ArcticAlbumsComponent
+    ArcticAlbumsComponent,    
+    InputIntegerComponent
   ],
   imports: [
     BrowserModule,

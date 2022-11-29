@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumShopService } from '../album-shop.service';
 import { Album } from './Album';
 
 @Component({
@@ -38,32 +39,20 @@ export class AlbumListComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private cart:AlbumShopService) {}
 
   ngOnInit(): void {}
 
-  upQuantity(album:Album):void{
-    if(album.quantity<album.stock){
-      album.quantity++;
-    }    
-  }
-
-  downQuantity(album:Album):void{
-    if(album.quantity>0){
-      album.quantity--;
-    }     
-  }
-
-  verifyAlbumQuantity(album:Album):void{
-    if(album.quantity>album.stock){
-      alert("No hay suficientes álbumes en stock");
-    }
-    if(album.quantity<0){
-      alert("Ingrese un numero mayor a 0");
-    }
+  addToCart(album: Album): void{
+    this.cart.addToCart(album);
+    album.stock -= album.quantity;
     album.quantity = 0;
   }
 
+  maxReached(m: string){
+    alert(m);
+  }
+  
 }
 
 

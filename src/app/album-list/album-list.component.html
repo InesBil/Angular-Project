@@ -6,23 +6,22 @@
             <th>Año</th>
             <th>Precio</th>
             <th>Stock</th>
-            <th>Cantidad</th>            
+            <th>Cantidad</th>
+            <th>Comprar</th>            
         </tr>
     </thead>
     <tbody class="table-group-divider">
-        <tr *ngFor="let album of albums" [ngClass]="{'clearance':album.clearance}">
+        <tr *ngFor="let album of albums" [ngClass]="{'clearance': album.clearance}">
             <td><img class="img-thumbnail"[src]="album.image" [alt]="album.album"></td>
             <td>{{album.album}}</td>
             <td>{{album.year}}</td>
             <td>{{album.price | currency}}</td>
-            <td><span class="badge text-bg-secondary" *ngIf="album.stock==0">SIN STOCK</span></td>
+            <td><span class="badge text-bg-warning" *ngIf="album.stock==0">SIN STOCK</span></td>
             <td>
-                <button class="btn btn-outline-secondary-small" (click)="downQuantity(album)">-</button>
-                <input
-                    type="text" 
-                    [(ngModel)]="album.quantity"
-                    (focusout)="verifyAlbumQuantity(album)"/>
-                <button class="btn btn-outline-secondary-small" (click)="upQuantity(album)">+</button>
+                <app-input-integer [(quantity)]="album.quantity" [max]="album.stock" (maxReached)="maxReached($event)" *ngIf="album.stock"></app-input-integer>
+            </td>
+            <td>
+                <button class="btn btn-secondary" (click)="addToCart(album)">Comprar</button>
             </td>
         </tr>       
     </tbody>
