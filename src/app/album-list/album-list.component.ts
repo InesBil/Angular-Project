@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumDataService } from '../album-data.service';
 import { AlbumShopService } from '../album-shop.service';
 import { Album } from './Album';
 
@@ -9,39 +10,17 @@ import { Album } from './Album';
 })
 export class AlbumListComponent implements OnInit {
 
-  albums: Album [] = [
-    {
-      image: './assets/images/The_Car.jpg',
-      album: 'The Car',
-      year: 2022,
-      price: 3500,
-      stock: 10,
-      clearance: false,
-      quantity: 0,    
-    },
-    {
-      image: './assets/images/Tranquility_Base_Hotel_Casino.jpg',
-      album: 'Tranquility Base Hotel & Casino',
-      year: 2018,
-      price: 3500,
-      stock: 8,
-      clearance: true,
-      quantity: 0,     
-    },
-    {
-      image: './assets/images/AM.jpg',
-      album: 'AM',
-      year: 2013,
-      price: 3500,
-      stock: 0,
-      clearance: false,
-      quantity: 0,     
-    },
-  ];
+  albums: Album [] = [];
 
-  constructor(private cart:AlbumShopService) {}
+  constructor(
+    private cart:AlbumShopService,
+    private albumsDataService: AlbumDataService) {      
+    }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.albumsDataService.getAll()
+    .subscribe(albums => this.albums = albums);
+  }
 
   addToCart(album: Album): void{
     this.cart.addToCart(album);
