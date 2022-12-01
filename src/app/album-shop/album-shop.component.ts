@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Album } from '../album-list/Album';
 import { AlbumShopService } from '../album-shop.service';
+
 
 @Component({
   selector: 'app-album-shop',
@@ -11,16 +12,30 @@ import { AlbumShopService } from '../album-shop.service';
 export class AlbumShopComponent implements OnInit {
 
   shopList$!: Observable<Album[]>;
+  albums: Album [] = [];
 
   constructor(private cart:AlbumShopService) {
-    this.shopList$ = cart.shopList.asObservable();
-    
+    this.shopList$ = cart.shopList.asObservable();        
    }
 
-  ngOnInit(): void{
+  ngOnInit(): void{    
+    this.cart.shopList.subscribe(albums => this.albums = albums);
+  }
+
+  total(){    
+    let sum=0;
+    this.albums.forEach(album => {
+      sum += album.quantity * album.price;      
+    });
+    return sum;    
+  }
+
+  emptyCart():void {
+
+    this.albums = [];
+    
+    this.total();   
+  
+  }
   
 }
-
-}
-
-

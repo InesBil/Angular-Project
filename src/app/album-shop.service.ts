@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Album } from './album-list/Album';
-import { BehaviorSubject } from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +12,40 @@ export class AlbumShopService {
   
   shopList: BehaviorSubject<Album[]> = new BehaviorSubject (this._shopList);
 
+  public shopAlbum: Observable<Album[]> = this.shopList.asObservable();
+
+
   constructor() { }
 
-  addToCart(album: Album){
-    let item: Album = this._shopList.find((v1)=> v1.album == album.album)!;
+  addToCart(album: Album){ 
+    let item: Album | undefined = this._shopList.find((v1)=> v1.album == album.album);
+    
     if(!item){
       this._shopList.push({ ... album });
     }
     else{
-      item.quantity += album.quantity;
+      if(album.quantity>0){
+        item.quantity += album.quantity;
+      }
     }
-    console.log(this._shopList);
+   
     this.shopList.next(this._shopList);
+    return this._shopList;
   }
 
-  
 }
+  
+
+
+
+
+
+
+  
+   
+  
+   
+
+
+  
+

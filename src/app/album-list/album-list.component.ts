@@ -23,9 +23,11 @@ export class AlbumListComponent implements OnInit {
   }
 
   addToCart(album: Album): void{
-    this.cart.addToCart(album);
-    album.stock -= album.quantity;
-    album.quantity = 0;
+    if(album.quantity!=0){
+      this.cart.addToCart(album);
+      album.stock -= album.quantity;
+      album.quantity = 0;
+    }
   }
 
   maxReached(m: string){

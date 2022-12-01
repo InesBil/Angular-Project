@@ -1,6 +1,28 @@
-<h3>Carrito</h3>
-<ul>
-    <li *ngFor=" let album of (shopList$ | async)">
-        {{album.album}}:{{album.quantity}}
-    </li>
-</ul>
+<h5 class="text-center bg-dark">Carrito de compras</h5>
+
+<table class="table table-hover text-center">
+    <thead>
+        <tr>
+            <th>Album</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>            
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor=" let album of (shopList$ | async)">         
+            <th><img class="img-thumbnail" style="width: 60px;"[src]="album.image" [alt]="album.album"></th>
+            <th>{{album.album}}</th>
+            <th>{{album.price | currency}}</th>
+            <th><span >{{album.quantity}}</span></th>
+            
+        </tr>
+    </tbody>
+</table>
+<h6 class="text-center ">        
+    TOTAL: {{total() | currency}}
+</h6>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">   
+    <button class="btn btn-warning me-md-2">Comprar</button>
+    <button class="btn btn-warning" (click)="emptyCart()">Vaciar carrito</button>
+</div>
