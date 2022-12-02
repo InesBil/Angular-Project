@@ -2,8 +2,7 @@
     <thead>
         <tr>
             <th></th>
-            <th>Album</th>
-            <th>Año</th>
+            <th>Album</th>            
             <th>Precio</th>
             <th>Stock</th>
             <th>Cantidad</th>
@@ -13,8 +12,7 @@
     <tbody class="table-group-divider">
         <tr *ngFor="let album of albums" [ngClass]="{'clearance': album.clearance}">
             <td><img class="img-thumbnail"[src]="album.image" [alt]="album.album"></td>
-            <td>{{album.album}}</td>
-            <td>{{album.year}}</td>
+            <td>{{album.album}}</td>           
             <td>{{album.price | currency}}</td>
             <td><span class="badge text-bg-warning" *ngIf="album.stock==0">SIN STOCK</span></td>
             <td>
