@@ -7,8 +7,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 
 export class AlbumShopService {
+  next(albums: Album[]) {
+    throw new Error('Method not implemented.');
+  }
 
-  private _shopList: Album [] = [];
+  _shopList: Album [] = [];
   
   shopList: BehaviorSubject<Album[]> = new BehaviorSubject (this._shopList);
 
@@ -31,6 +34,11 @@ export class AlbumShopService {
    
     this.shopList.next(this._shopList);
     return this._shopList;
+  }
+
+  clearCart(){
+    this._shopList = [];
+    this.shopList.next(this._shopList);
   }
 
 }

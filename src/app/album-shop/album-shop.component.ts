@@ -31,11 +31,8 @@ export class AlbumShopComponent implements OnInit {
   }
 
   emptyCart():void {
-
-    this.albums = [];
-    
-    this.total();   
-  
+    this.total(); 
+    this.cart.clearCart();  
   }
   
 }
